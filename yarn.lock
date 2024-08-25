@@ -117,6 +117,15 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
+"@rollup/pluginutils@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.0.tgz#7e53eddc8c7f483a4ad0b94afb1f7f5fd3c771e0"
+  integrity sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==
+  dependencies:
+    "@types/estree" "^1.0.0"
+    estree-walker "^2.0.2"
+    picomatch "^2.3.1"
+
 "@rollup/rollup-android-arm-eabi@4.21.0":
   version "4.21.0"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.21.0.tgz#d941173f82f9b041c61b0dc1a2a91dcd06e4b31e"
@@ -227,6 +236,17 @@
     "@thi.ng/equiv" "^2.1.65"
     "@thi.ng/object-utils" "^1.1.2"
     "@thi.ng/transducers" "^9.2.0"
+    tslib "^2.6.3"
+
+"@thi.ng/atom@^5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@thi.ng/atom/-/atom-5.3.9.tgz#3cffce2d8953127dd8296b779a8e7355751fae33"
+  integrity sha512-eT2ZOESlHRkEwYroAi066aFKjvNpoYdreqWOlnWJQ0OfRa8jGWu8TkbOHZcP4jtPAn389IYSWIEsZ/1wB4zPnw==
+  dependencies:
+    "@thi.ng/api" "^8.11.9"
+    "@thi.ng/equiv" "^2.1.65"
+    "@thi.ng/errors" "^2.5.15"
+    "@thi.ng/paths" "^5.1.89"
     tslib "^2.6.3"
 
 "@thi.ng/binary@^3.4.32":
@@ -358,6 +378,15 @@
     "@thi.ng/api" "^8.11.9"
     "@thi.ng/checks" "^3.6.11"
 
+"@thi.ng/paths@^5.1.89":
+  version "5.1.89"
+  resolved "https://registry.yarnpkg.com/@thi.ng/paths/-/paths-5.1.89.tgz#2cc3c689edce2c76592c2337213d60a80efb68d9"
+  integrity sha512-iwwDk/q4qVoBqglWVijfaRE5Cmhy+eVbeA3u/OYTG1ftWigQWmX4x1v8zni3EmnuQpN2TSlA5ys/UZ2ZTV6j+A==
+  dependencies:
+    "@thi.ng/api" "^8.11.9"
+    "@thi.ng/checks" "^3.6.11"
+    "@thi.ng/errors" "^2.5.15"
+
 "@thi.ng/pixel@^7.3.2":
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/@thi.ng/pixel/-/pixel-7.3.2.tgz#4ccd3e3346596aa857b17297166899e83c4044d1"
@@ -384,6 +413,20 @@
   dependencies:
     "@thi.ng/api" "^8.11.9"
     "@thi.ng/errors" "^2.5.15"
+
+"@thi.ng/rstream@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@thi.ng/rstream/-/rstream-9.0.0.tgz#3a6990b2b6e3800fa73467519ee034bab68bf258"
+  integrity sha512-4ADyjCnTce4pYsKL6ecavyL+CszOqUAF+WKPHDWmHM/XgviqJtYiXm/W3UXiH8qnhpfnEmez20s99tkV1TZaew==
+  dependencies:
+    "@thi.ng/api" "^8.11.9"
+    "@thi.ng/arrays" "^2.10.0"
+    "@thi.ng/associative" "^7.0.6"
+    "@thi.ng/atom" "^5.3.9"
+    "@thi.ng/checks" "^3.6.11"
+    "@thi.ng/errors" "^2.5.15"
+    "@thi.ng/logger" "^3.0.19"
+    "@thi.ng/transducers" "^9.2.0"
 
 "@thi.ng/shader-ast-glsl@^0.4.135":
   version "0.4.135"
@@ -491,7 +534,7 @@
     "@thi.ng/vector-pools" "^3.2.10"
     "@thi.ng/vectors" "^7.11.10"
 
-"@types/estree@1.0.5":
+"@types/estree@1.0.5", "@types/estree@^1.0.0":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.5.tgz#a6ce3e556e00fd9895dd872dd172ad0d4bd687f4"
   integrity sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==
@@ -525,6 +568,11 @@ esbuild@^0.21.3:
     "@esbuild/win32-ia32" "0.21.5"
     "@esbuild/win32-x64" "0.21.5"
 
+estree-walker@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
+
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
@@ -539,6 +587,11 @@ picocolors@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.1.tgz#a8ad579b571952f0e5d25892de5445bcfe25aaa1"
   integrity sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==
+
+picomatch@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
+  integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
 postcss@^8.4.41:
   version "8.4.41"
@@ -588,6 +641,13 @@ typescript@^5.5.3:
   version "5.5.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
   integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
+
+vite-plugin-glsl@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-glsl/-/vite-plugin-glsl-1.3.0.tgz#6138dc373afbd3891481b529779f76b3625c37ac"
+  integrity sha512-SzEoLet9Bp5VSozjrhUiSc3xX1+u7rCTjXAsq4qWM3u8UjilI76A9ucX/T+CRGQCe25j50GSY+9mKSGUVPET1w==
+  dependencies:
+    "@rollup/pluginutils" "^5.1.0"
 
 vite@^5.4.1:
   version "5.4.2"

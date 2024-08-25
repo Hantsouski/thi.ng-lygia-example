@@ -1,45 +1,63 @@
 import "./style.css";
 
-import { assign, vec4, vec2 } from "@thi.ng/shader-ast";
-import { fragUV } from "@thi.ng/shader-ast-stdlib";
-
 import {
-  glCanvas,
   compileModel,
-  draw,
   defQuadModel,
-  FX_SHADER_SPEC,
   defShader,
-  ShaderFn,
+  draw,
+  FX_SHADER_SPEC,
+  glCanvas,
 } from "@thi.ng/webgl";
+import { meldDeepObj } from "@thi.ng/object-utils";
+import { fromDOMEvent, fromRAF, merge, sync, reactive } from "@thi.ng/rstream";
 
-import { defMain } from "@thi.ng/shader-ast/ast/function";
+import fragmentShader from "./shaders/fragment-shader.frag";
 
-const W = window.innerWidth * 0.6;
-const H = window.innerHeight * 0.6;
+const W = 640;
+const H = 640;
 
 const { canvas, gl } = glCanvas({
   width: W,
   height: H,
-  version: 1,
+  version: 2,
   parent: document.getElementById("app")!,
 });
 
-export const PASSTHROUGH_FS: ShaderFn = (gl, _, __, outs) => [
-  defMain(() => [
-    assign(
-      outs.fragColor,
-      vec4(fragUV(gl.gl_FragCoord, vec2(canvas.width, canvas.height)), 1, 1)
-    ),
-  ]),
-];
-
 const model = {
   ...defQuadModel({ uv: false }),
-  shader: defShader(gl, { ...FX_SHADER_SPEC, fs: PASSTHROUGH_FS }),
+  shader: defShader(
+    gl,
+    meldDeepObj(FX_SHADER_SPEC, {
+      fs: fragmentShader,
+      uniforms: {
+        u_resolution: ["vec2", [W * 2, H * 2]],
+        u_mouse: ["vec2", [0, 0]],
+        u_time: ["float", 0],
+      },
+    }),
+  ),
 };
 
 compileModel(gl, model);
-console.log(model);
 
-draw(model);
+sync({
+  src: {
+    time: fromRAF(),
+    mouse: merge({
+      src: [
+        reactive([0, 0]),
+        fromDOMEvent(canvas, "mousemove").map(({ offsetX, offsetY }) => [
+          offsetX / W,
+          1 - offsetY / H,
+        ]),
+      ],
+    }),
+  },
+}).subscribe({
+  next: ({ mouse, time }) => {
+    model.uniforms!.u_mouse = mouse;
+    model.uniforms!.u_time = time * 0.005;
+
+    draw(model);
+  },
+});
